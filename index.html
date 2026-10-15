@@ -47,7 +47,17 @@ h1, h2, h3, .display { font-family: Silkscreen, monospace; font-weight: 700; let
 nav { position: sticky; top: 0; z-index: 10; background: rgba(13,16,32,.88); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
 nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-family: Silkscreen, monospace; font-weight: 700; font-size: 18px; white-space: nowrap; }
-.brand svg { width: 38px; height: 27px; }
+.brand svg { width: 38px; height: 36px; overflow: visible; }
+.toast-logo .steam { fill: #fff; opacity: 0; animation: steam 2.8s steps(7) infinite; }
+.toast-logo .s2 { animation-delay: .9s; }
+.toast-logo .s3 { animation-delay: 1.8s; }
+.toast-logo .toast-body { animation: bob 2.8s steps(1) infinite; }
+.toast-logo .glint { opacity: 0; animation: glint 4.2s steps(1) infinite; }
+.brand:hover .toast-body { animation-duration: .7s; }
+@keyframes steam { 0% { transform: translateY(1px); opacity: 0; } 20% { opacity: .55; } 100% { transform: translateY(-4px); opacity: 0; } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1px); } }
+@keyframes glint { 0%, 88%, 100% { opacity: 0; } 90%, 94% { opacity: 1; } 92% { opacity: .4; } }
+@media (prefers-reduced-motion: reduce) { .toast-logo * { animation: none !important; } .toast-logo .steam { opacity: .35; } }
 nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
 nav ul a { color: var(--muted); text-decoration: none; font-size: 15px; }
 nav ul a:hover { color: var(--text); }
@@ -126,7 +136,11 @@ footer a { color: var(--muted); }
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Kaya Toast Games home">
       <!-- pixel kaya toast: toasted bread, pandan kaya, thick butter slab -->
-      <svg viewBox="0 0 32 23" shape-rendering="crispEdges" aria-hidden="true">
+      <svg class="toast-logo" viewBox="0 -7 32 30" shape-rendering="crispEdges" aria-hidden="true">
+        <g class="steam s1"><rect x="9" y="0" width="1" height="1"/><rect x="10" y="-1" width="1" height="1"/><rect x="10" y="-2" width="1" height="1"/><rect x="9" y="-3" width="1" height="1"/><rect x="9" y="-4" width="1" height="1"/><rect x="10" y="-5" width="1" height="1"/></g>
+        <g class="steam s2"><rect x="16" y="0" width="1" height="1"/><rect x="17" y="-1" width="1" height="1"/><rect x="17" y="-2" width="1" height="1"/><rect x="16" y="-3" width="1" height="1"/><rect x="16" y="-4" width="1" height="1"/><rect x="17" y="-5" width="1" height="1"/></g>
+        <g class="steam s3"><rect x="23" y="0" width="1" height="1"/><rect x="24" y="-1" width="1" height="1"/><rect x="24" y="-2" width="1" height="1"/><rect x="23" y="-3" width="1" height="1"/><rect x="23" y="-4" width="1" height="1"/><rect x="24" y="-5" width="1" height="1"/></g>
+        <g class="toast-body">
         <rect x="6" y="0" width="24" height="1" fill="#2e170b"/>
         <rect x="5" y="1" width="1" height="1" fill="#2e170b"/>
         <rect x="6" y="1" width="24" height="1" fill="#f7cf86"/>
@@ -254,6 +268,8 @@ footer a { color: var(--muted); }
         <rect x="25" y="19" width="1" height="1" fill="#2e170b"/>
         <rect x="1" y="20" width="24" height="1" fill="#2e170b"/>
         <rect x="3" y="21" width="26" height="1" fill="#070913"/>
+        <g class="glint"><rect x="5" y="10" width="1" height="3" fill="#fff"/><rect x="4" y="11" width="3" height="1" fill="#fff"/></g>
+        </g>
       </svg>
       Kaya Toast Games
     </a>
